@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduGenie - AI Learning Assistant</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}">
+</head>
+<body>
+  <header class="hero">
+    <h1>Welcome to EduGenie 🧠✨</h1>
+    <p>Your personal AI tutor for learning support!</p>
+    <span id="status" class="status" title="Backend status">checking…</span>
+  </header>
+
+  <main class="container">
+    <nav class="tabs" role="tablist" aria-label="EduGenie tools">
+      <button class="tab active" role="tab" data-tab="qa">❓ Ask</button>
+      <button class="tab" role="tab" data-tab="explain">💡 Explain</button>
+      <button class="tab" role="tab" data-tab="summary">📝 Summarize</button>
+      <button class="tab" role="tab" data-tab="quiz">🎯 Quiz</button>
+      <button class="tab" role="tab" data-tab="learn">🗺️ Learning Path</button>
+    </nav>
+
+    <!-- Q&A -->
+    <section class="panel active" id="panel-qa" role="tabpanel">
+      <form id="qaForm">
+        <label for="question"><strong>Ask EduGenie a Question:</strong></label>
+        <input type="text" id="question" placeholder="Which is the largest ocean?" maxlength="2000" required>
+        <button type="submit">Get Answer</button>
+      </form>
+      <div id="qaResult" class="output" aria-live="polite"></div>
+    </section>
+
+    <!-- Explanation -->
+    <section class="panel" id="panel-explain" role="tabpanel">
+      <form id="explainForm">
+        <label for="topic"><strong>Need an Explanation?</strong></label>
+        <input type="text" id="topic" placeholder="Photosynthesis" maxlength="500" required>
+        <button type="submit">Explain</button>
+      </form>
+      <div id="explanationResult" class="output" aria-live="polite"></div>
+    </section>
+
+    <!-- Summary -->
+    <section class="panel" id="panel-summary" role="tabpanel">
+      <form id="summaryForm">
+        <label for="summaryText"><strong>Summarize a Paragraph:</strong></label>
+        <textarea id="summaryText" rows="7" placeholder="Paste long content to summarize" required></textarea>
+        <button type="submit">Summarize</button>
+      </form>
+      <div id="summaryResult" class="output" aria-live="polite"></div>
+    </section>
+
+    <!-- Quiz -->
+    <section class="panel" id="panel-quiz" role="tabpanel">
+      <form id="quizForm">
+        <label for="quizText"><strong>Generate a Quiz:</strong> <small>(enter a topic or paste a passage)</small></label>
+        <textarea id="quizText" rows="5" placeholder="The Pythagoras Theorem" required></textarea>
+        <button type="submit">Generate Quiz</button>
+      </form>
+      <div id="quizResult" class="output" aria-live="polite"></div>
+    </section>
+
+    <!-- Learning path -->
+    <section class="panel" id="panel-learn" role="tabpanel">
+      <form id="learnForm">
+        <label for="learnTopic"><strong>Get a Learning Path:</strong></label>
+        <input type="text" id="learnTopic" placeholder="SQL" maxlength="500" required>
+        <button type="submit">Recommend Path</button>
+      </form>
+      <div id="learnResult" class="output" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer>EduGenie · FastAPI + Google Gemini + LaMini-Flan-T5</footer>
+  <script src="{{ url_for('static', path='app.js') }}"></script>
+</body>
+</html>
